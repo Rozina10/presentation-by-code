@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stock Market Presentation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .slide {
+      display: none;
+      flex-direction: column;
+      text-align: center;
+      padding: 30px;
+      max-width: 800px;
+      animation: fadeIn 0.6s ease-in-out;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    h1, h2 {
+      color: #00ffc3;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      text-align: left;
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    li {
+      margin: 15px 0;
+      padding: 10px 15px;
+      border-left: 5px solid #00ffc3;
+      background: rgba(0, 255, 195, 0.1);
+      border-radius: 8px;
+      font-size: 18px;
+      line-height: 1.4;
+      transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+      cursor: default;
+    }
+
+    li:hover {
+      background: rgba(0, 255, 195, 0.3);
+      color: #000;
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    .nav {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 16px;
+      margin: 0 15px;
+      background-color: #00ffc3;
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 0 10px #00ffc3;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00c9a7;
+      box-shadow: 0 0 15px #00c9a7;
+    }
+
+    .thank-you {
+      font-size: 50px;
+      font-weight: 900;
+      color: #00ffc3;
+      user-select: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .slide {
+        padding: 20px;
+      }
+      li {
+        font-size: 16px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slides -->
+  <div class="slide active">
+    <h1>Introduction to the Stock Market</h1>
+    <h2>Understanding How It Works, Its Benefits, and Getting Started</h2>
+  </div>
+
+  <div class="slide">
+    <h2>What is the Stock Market?</h2>
+    <ul>
+      <li>A regulated marketplace where shares of publicly traded companies are bought and sold</li>
+      <li>Allows companies to raise capital by selling ownership stakes to investors</li>
+      <li>Primary markets: where new securities are issued (IPOs)</li>
+      <li>Secondary markets: where existing securities are traded (NYSE, NASDAQ)</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h2>How It Works</h2>
+    <ul>
+      <li>Investors purchase shares (partial ownership) in companies</li>
+      <li>Share prices fluctuate based on supply, demand, company performance, and market conditions</li>
+      <li>Trades occur through brokers or online trading platforms</li>
+      <li>Market indexes (S&P 500, Dow Jones) track overall market performance</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h2>Benefits & Advantages</h2>
+    <ul>
+      <li>Wealth building through capital appreciation and dividends</li>
+      <li>Portfolio diversification opportunities</li>
+      <li>Liquidity - ability to convert investments to cash quickly</li>
+      <li>Potential for returns exceeding inflation rates</li>
+      <li>Ownership in innovative and growing companies</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h2>Potential Drawbacks</h2>
+    <ul>
+      <li>Market volatility and risk of capital loss.</li>
+      <li>Requires research and knowledge for informed decisions</li>
+      <li>Emotional factors can impact investment choices</li>
+      <li>Short-term performance may not reflect long-term value</li>
+      <li>Time commitment for proper portfolio management</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h2>Getting Started</h2>
+    <ul>
+      <li>Define your investment goals and risk tolerance</li>
+      <li>Start with fundamentals research and education</li>
+      <li>Consider diversification across sectors and asset classes</li>
+      <li>Begin with managed funds before individual stock selection</li>
+      <li>Develop a long-term investment strategy</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <div class="thank-you">Thank You!</div>
+  </div>
+
+
+  <div class="nav">
+    <button class="prev-btn" onclick="prevSlide()">Previous</button>
+    <button class="next-btn" onclick="nextSlide()">Next</button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let current = 0;
+
+    function updateButtons() {
+      prevBtn.style.display = current === 0 ? 'none' : 'inline-block';
+      nextBtn.style.display = current === slides.length - 1 ? 'none' : 'inline-block';
+    }
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      updateButtons();
+    }
+
+    function nextSlide() {
+      if (current < slides.length - 1) {
+        current++;
+        showSlide(current);
+      }
+    }
+
+    function prevSlide() {
+      if (current > 0) {
+        current--;
+        showSlide(current);
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    showSlide(current); 
+  </script>
+</body>
+</html>
+
